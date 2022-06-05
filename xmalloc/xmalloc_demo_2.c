@@ -1,6 +1,7 @@
 /*
     Demo to test different uses of the xmalloc function.
-    Written by: Rouben Rostamian (Programming Projects in C)
+    Inspired by: Rouben Rostamian (Programming Projects in C)
+    Written by: Tony De Corso
 */
 #include "xmalloc.h"
 #include <stdio.h>

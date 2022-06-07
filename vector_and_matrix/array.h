@@ -28,7 +28,29 @@
                 make_matrix_loop_counter++){                \
             free_vector((a)[make_matrix_loop_counter]);     \
         }                                                   \
-        free_vector(a);                                     \                                          
+        free_vector(a);                                     \
+    }                                                       \
+} while (0)
+
+#define make_3array(v, n1, n2, n3) do {                     \
+    make_vector(v, (n1));                                   \
+    size_t make_3array_loop_counter;                        \
+    for (make_3array_loop_counter = 0;                      \
+         make_3array_loop_counter<(n1);                     \
+         make_3array_loop_counter++)                        \
+    {                                                       \
+        make_matrix(v[make_3array_loop_counter], (n2), (n3));   \
+    }                                                       \
+} while (0)
+
+#define make_4array(v, n1, n2, n3, n4) do {                 \
+    make_vector(v, (n1));                                   \
+    size_t make_4array_loop_counter;                        \
+    for (make_4array_loop_counter = 0;                      \
+         make_4array_loop_counter<(n1);                     \
+         make_4array_loop_counter++)                        \
+    {                                                       \
+        make_3array(v[make_4array_loop_counter], (n2), (n3), (n4));   \
     }                                                       \
 } while (0)
 

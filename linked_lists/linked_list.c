@@ -1,7 +1,11 @@
 /* 
  * This module implements the linked lists
  * module, for using linked lists in C.
- * */
+ * 
+ * Inspired by: Rouben Rostamian
+ * Written by: Tony De Corso
+ *
+ */
 
 #include "linked_list.h"
 #include "xmalloc.h"
@@ -35,5 +39,13 @@ conscell *ll_pop(conscell *list)
     return new_head;
 }
 
-void
+void ll_free(conscell *list)
+{
+    if (list != NULL)
+    {
+	conscell *new_head = list->next;
+	free(list);
+	ll_free(new_head);
+    }
+}
 

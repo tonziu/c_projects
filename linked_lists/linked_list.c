@@ -49,3 +49,20 @@ void ll_free(conscell *list)
     }
 }
 
+conscell *ll_reverse(conscell *list)
+{
+    if (list == NULL)
+    {
+	return NULL;
+    }
+
+    conscell *reversed = NULL;
+
+    while (list != NULL)
+    {
+	reversed = ll_push(reversed, list->data);
+	list = list->next;
+    }
+
+    return reversed;
+}

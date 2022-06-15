@@ -48,3 +48,10 @@
     size_t make_4array_loop_counter;                        \
     for (make_4array_loop_counter = 0;                      \
          make_4array_loop_counter<(n1);                     \
+         make_4array_loop_counter++)                        \
+    {                                                       \
+        make_3array(v[make_4array_loop_counter], (n2), (n3), (n4));   \
+    }                                                       \
+} while (0)
+
+#endif /*H_ARRAY_H*/

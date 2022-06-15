@@ -1,5 +1,5 @@
 /*
-    This module tests the make_4array function defined in
+    This module tests the make_3array function defined in
     array.h.
 
     Written by: Tony De Corso
@@ -11,17 +11,16 @@
 
 int main(void)
 {
-    int ****array;
-    int n1 = 2, n2 = 3, n3 = 4, n4 = 5;
-    make_4array(array, n1, n2, n3, n4);
-    array[0][0][0][0] = 1;
+    int ***array;
+    int n1 = 2, n2 = 3, n3 = 4;
+    make_3array(array, n1, n2, n3);
+    array[0][0][0] = 1;
+    array[0][1][1] = 2;
+    array[1][2][2] = 3;
     for (int i = 0; i < n1; i++){
         for (int j = 0; j < n2; j++){
             for (int k = 0; k < n3; k++){
-                for (int z = 0; z < n4; z++){
-                    fprintf(stdout, "%d\t", array[i][j][k][z]);
-                }
-                printf("\n");
+                fprintf(stdout, "%d\t", array[i][j][k]);
             }
             printf("\n");
         }

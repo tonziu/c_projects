@@ -106,3 +106,71 @@ cell *ll_sort(cell *list, int (*cmp)(const void *item1,
     p->next = head;
     return list1;
 }
+
+cell *ll_filter(cell *list, int (*filter) (const void *a), cell **removed)
+{
+    if (list == NULL)
+	return list;
+    else if (filter(list->data)) 
+    {
+	cell *p = list->next;
+	list->next = *removed;
+	*removed = list;
+	return ll_filter(p, filter, removed);
+    }
+    else
+    {
+	list->next = ll_filter(list->next, filter, removed);
+	return list;
+    }
+}
+
+int ll_length(cell *list)
+{
+    int count = 0;
+    while (list != NULL)
+    {
+	count++;
+	list = list->next;
+    }
+    return count;
+}
+
+cell *ll_append(cell *list1, cell *list2)
+{
+    if (list1 == NULL)
+    {
+	return list2;
+    }
+    else if (list2 == NULL)
+    {
+	return list1;
+    }
+    else
+    {
+	cell *p = list1;
+	while (list1->next != NULL)
+	{
+	    list1 = list1->next;
+	}
+	list1->next = list2;
+	return p;
+    }
+}
+
+cell *ll_map(cell *list, void (*map)(void *data))
+{
+    if (list == NULL)
+	return list;
+    else
+    {
+	cell *p = list;
+	while (p != NULL)
+	{
+	   map(p->data);
+	   p = p->next;
+	}
+
+	return list;
+    }
+}

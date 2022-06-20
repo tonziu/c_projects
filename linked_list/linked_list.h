@@ -35,4 +35,14 @@ cell *ll_sort(cell *list, int (*cmp)(const void *item1,
 	                             const void *item2, 
 				     void *params), void *params);
 
+cell *ll_filter(cell *list,
+	        int (*filter) (const void *a),
+		cell **removed);
+
+int ll_length(cell *list);
+
+cell *ll_append(cell *list1, cell *list2);
+
+cell *ll_map(cell *list, void (*map)(void *data));
+
 #endif

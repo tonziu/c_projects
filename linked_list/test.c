@@ -3,6 +3,8 @@
 
 void print(cell *list);
 int cmp(const void *item1,const void *item2, void *params);
+int catch_the_odds(const void *aa);
+void square_me(void *data);
 
 int main(void)
 {
@@ -56,6 +58,18 @@ int main(void)
     list = ll_sort(list, cmp, NULL);
 
     print(list);
+    
+    printf("filtering the odd values\n");
+    cell *removed = NULL;
+    list = ll_filter(list, catch_the_odds, &removed);
+    print(list);
+    printf("appending the removed items\n");
+    list = ll_append(list, removed);
+    print(list);
+
+    printf("squaring the items\n");
+    list = ll_map(list, square_me);
+    print(list);
 
     printf("deleting the list...\n");
     ll_free(list);
@@ -94,4 +108,16 @@ int cmp(const void *item1,const void *item2, void *params)
     }
     else 
 	return 0;
+}
+
+int catch_the_odds(const void *aa)
+{
+    int a = *(int*)aa;
+    return a%2;
+}
+
+void square_me(void *data)
+{
+    int *n = data;
+    *n = (*n) * (*n);
 }
